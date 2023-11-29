@@ -7,12 +7,12 @@ class Logger(object):
     # The methods below are just suggestions. You can rearrange these or 
     # rewrite them to better suit your code style. 
     # What is important is that you log the following information from the simulation:
-    # Meta data: This shows the starting situtation including:
+    # Meta data: This shows the starting situation including:
     #   population, initial infected, the virus, and the initial vaccinated.
     # Log interactions. At each step there will be a number of interaction
     # You should log:
-    #   The number of interactions, the number of new infections that occured
-    # You should log the results of each step. This should inlcude: 
+    #   The number of interactions, the number of new infections that occurred
+    # You should log the results of each step. This should include: 
     #   The population size, the number of living, the number of dead, and the number 
     #   of vaccinated people at that step. 
     # When the simulation concludes you should log the results of the simulation. 
