@@ -8,7 +8,7 @@ class Virus(object):
         self.mortality_rate = mortality_rate
 
 
-# Test this class
+# Test this class (original from assignment)
 if __name__ == "__main__":
     # Test your virus class by making an instance and confirming 
     # it has the attributes you defined
@@ -17,3 +17,15 @@ if __name__ == "__main__":
     assert virus.repro_rate == 0.8
     assert virus.mortality_rate == 0.3
     # Test passes!
+
+    # Additional test #1
+    virus = Virus("Tuberculosis", 0.5, 0.8)
+    assert virus.name == "Tuberculosis"
+    assert virus.repro_rate == 0.5 
+    assert virus.mortality_rate == 0.8
+
+    #Additional test #2
+    virus = Virus("Salmonella", 0.9, 0.3)
+    assert virus.name == "Salmonella"
+    assert virus.repro_rate == 0.9 
+    assert virus.mortality_rate == 0.3

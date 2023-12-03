@@ -61,6 +61,13 @@ if __name__ == "__main__":
     assert infected_person.is_vaccinated is False
     assert infected_person.infection == virus
 
+    # Additional test #1
+    # Test an infected person who is not vaccinated
+    infected_person = Person(4, False, virus)
+    assert infected_person._id == 4
+    assert infected_person.is_vaccinated is False
+    assert infected_person.infection == virus
+
     # You need to check the survival of an infected person. Since the chance
     # of survival is random you need to check a group of people. 
     # Create a list to hold 100 people. Use the loop below to make 100 people
