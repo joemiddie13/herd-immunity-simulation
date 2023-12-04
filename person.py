@@ -122,3 +122,47 @@ if __name__ == "__main__":
             infected_count += 1
 
     print(f"Infected Count: {infected_count}, Total: {len(uninfected_people)}")
+
+    # Additional Test #2: Infected after being healthy and unvaccinated
+    # Create a healthy, unvaccinated person
+    healthy_person = Person(100, False)
+    print(f"Initial state of person 100: Vaccinated: {healthy_person.is_vaccinated}, Infected: {healthy_person.infection}, Alive: {healthy_person.is_alive}")
+
+    # Infect the person and test if their attributes update correctly
+    test_virus = Virus("TestVirus", 0.5, 0.2)
+    healthy_person.infection = test_virus
+    print(f"Person 100 infected with {test_virus.name}")
+
+    # Simulate the survival check
+    survived = healthy_person.did_survive_infection()
+    print(f"Person 100 survival check: Survived: {survived}, Alive: {healthy_person.is_alive}")
+
+    # If survived, check if the person is now vaccinated and no longer has the infection
+    if survived:
+        print(f"Person 100 post-infection: Vaccinated: {healthy_person.is_vaccinated}, Infected: {healthy_person.infection}")
+
+
+    # Additional Test # 3: Check the outcome of infection on a person
+    virus = Virus("TestVirus", 0.6, 0.4)
+    person = Person(103, False, virus)
+
+    # Check initial status of the person
+    assert person._id == 103
+    assert person.is_alive is True
+    assert person.is_vaccinated is False
+    assert person.infection == virus
+    print(f"Person 103 initial status: Alive: {person.is_alive}, Vaccinated: {person.is_vaccinated}, Infected: {person.infection is not None}")
+
+    # Simulate the outcome of the infection
+    survived = person.did_survive_infection()
+    if survived:
+        # Check if the person is now vaccinated
+        assert person.is_vaccinated is True
+        print("Person 103 survived the infection and is now vaccinated.")
+    else:
+        # Check if the person is no longer alive
+        assert person.is_alive is False
+        print("Person 103 did not survive the infection.")
+
+    # Print final status
+    print(f"Person 103 final status: Alive: {person.is_alive}, Vaccinated: {person.is_vaccinated}")
