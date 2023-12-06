@@ -1,4 +1,5 @@
 import random
+import sys
 from datetime import datetime
 from person import Person
 from logger import Logger
@@ -133,8 +134,27 @@ class Simulation(object):
 		saved = sum(person.is_vaccinated and person.infection is None for person in self.population)
 		return saved
 
+# if __name__ == "__main__":
+# 	# Test your simulation here
+# 	virus = Virus("HIV", 0.8, 0.3)
+# 	sim = Simulation(virus, 100000, 0.45, 10)
+# 	sim.run()
+
 if __name__ == "__main__":
-	# Test your simulation here
-	virus = Virus("HIV", 0.8, 0.3)
-	sim = Simulation(virus, 100000, 0.45, 10)
-	sim.run()
+    # Check if the correct number of command line arguments were provided
+    if len(sys.argv) != 7:
+        print("Usage: python3 simulation.py population_size vaccination_percentage virus_name mortality_rate reproduction_rate initial_infected")
+        sys.exit(1)
+
+    # Extract arguments from the command line
+    population_size = int(sys.argv[1])
+    vaccination_percentage = float(sys.argv[2])
+    virus_name = sys.argv[3]
+    mortality_rate = float(sys.argv[4])
+    reproduction_rate = float(sys.argv[5])
+    initial_infected = int(sys.argv[6])
+
+    # Create Virus and Simulation instances with command line arguments
+    virus = Virus(virus_name, reproduction_rate, mortality_rate)
+    simulation = Simulation(virus, population_size, vaccination_percentage, initial_infected)
+    simulation.run()
