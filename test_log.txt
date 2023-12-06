@@ -1,4 +1,0 @@
-Population size: 100	Vaccination Percentage: 0.2	Virus TestVirus	Mortality Rate: 0.05	Basic Reproduction Number: 1.0
-Step 1: Interactions: 50, New Infections: 5
-Step 1: Population Count: 95, New Fatalities: 5
-End of Step 1

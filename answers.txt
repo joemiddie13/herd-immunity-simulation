@@ -1,0 +1,43 @@
+Herd Immunity Simulation Analysis
+
+Inputs for the Simulation:
+
+Population Size: 100,000
+Percent Vaccinated: 45%
+Virus Name: HIV
+Mortality Rate: 30%
+Reproductive Rate: 80%
+Analysis of Simulation Results:
+
+Population Size and Vaccination Details:
+
+The simulation started with a total population of 100,000 individuals.
+45% of this population, i.e., 45,000 individuals, were vaccinated against the virus from the start.
+Virus Characteristics:
+
+The virus simulated was HIV.
+It had a high mortality rate of 30% and a reproductive rate of 80%.
+Infection and Mortality Rates:
+
+Percentage of Population Infected:
+
+The log shows that 7.328% of the population became infected at some point before the virus burned out.
+This equates to approximately 7,328 individuals from the original population.
+Percentage of Population Deceased:
+
+The simulation ended with 20.284% of the population succumbing to the virus.
+This means 20,284 individuals died due to the virus.
+Vaccination's Impact:
+
+Total Number of Interactions:
+
+There were 54,990 interactions recorded during the simulation.
+Number of Lives Saved by Vaccinations:
+
+A significant number of 92,672 vaccinations were administered during the simulation.
+These vaccinations played a crucial role in preventing further spread of the infection and saving lives.
+Conclusion:
+
+The high reproductive rate of the virus led to a substantial number of infections early in the simulation.
+Despite the high mortality rate, the large number of vaccinations administered helped curb the spread and ultimately ended the simulation with all living individuals being vaccinated.
+The simulation highlights the critical role of vaccinations in controlling the spread of highly infectious diseases.

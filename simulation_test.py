@@ -1,34 +1,51 @@
+import unittest
 from simulation import Simulation
 from virus import Virus
+from person import Person
 
-def test_initialization():
-    virus = Virus("TestVirus", 0.5, 0.2)
-    simulation = Simulation(virus, 100, 0.1, 5)
-    assert simulation.pop_size == 100
-    assert simulation.vacc_percentage == 0.1
-    assert len(simulation.population) == 100
+class SimulationTest(unittest.TestCase):
+	"""
+	This class contains unit tests for the Simulation class.
+	"""
 
-def test_population_creation():
-    virus = Virus("TestVirus", 0.5, 0.2)
-    simulation = Simulation(virus, 100, 0.2, 5)
-    vaccinated_count = sum(p.is_vaccinated for p in simulation.population)
-    infected_count = sum(p.infection == virus for p in simulation.population)
-    assert vaccinated_count == 20
-    assert infected_count == 5
+	def setUp(self):
+		"""
+		Set up a simulation instance with a test virus and population.
+		"""
+		virus = Virus("TestVirus", 0.2, 0.6)
+		self.simulation = Simulation(virus, 100, 0.2, 10)
 
-def test_simulation_step():
-    virus = Virus("TestVirus", 0.5, 0.2)
-    simulation = Simulation(virus, 10, 0.2, 1)
-    simulation.time_step()
+	def test_create_population(self):
+		"""
+		Test the creation of a population with the correct number of vaccinated and infected individuals.
+		"""
+		self.assertEqual(len(self.simulation.population), 100)
+		vaccinated_count = sum(person.is_vaccinated for person in self.simulation.population)
+		infected_count = sum(person.infection is not None for person in self.simulation.population)
+		self.assertEqual(vaccinated_count, 20)
+		self.assertEqual(infected_count, 10)
 
-def test_simulation_completion():
-    virus = Virus("TestVirus", 0.5, 0.2)
-    simulation = Simulation(virus, 10, 1, 0)  # All vaccinated, no infected
-    steps = simulation.run()
-    assert steps == 1
+	def test_simulation_should_continue(self):
+		"""
+		Test if the simulation should continue based on the current state of the population.
+		"""
+		continue_simulation = self.simulation._simulation_should_continue()
+		self.assertTrue(continue_simulation)
 
-# Run tests
-test_initialization()
-test_population_creation()
-test_simulation_step()
-test_simulation_completion()
+	def test_interaction(self):
+		"""
+		Test interactions between an infected person and a healthy person.
+		"""
+		infected_person = Person(1, False, self.simulation.virus)
+		healthy_person = Person(2, False)
+		interaction_result = self.simulation.interaction(infected_person, healthy_person)
+		self.assertIsInstance(interaction_result, bool)
+
+	def test_time_step(self):
+		"""
+		Test the simulation time step for increasing the number of infected individuals.
+		"""
+		self.simulation.time_step()
+
+if __name__ == '__main__':
+	unittest.main()

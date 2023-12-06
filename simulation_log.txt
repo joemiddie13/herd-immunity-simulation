@@ -1,2 +1,7 @@
-Population size: 10	Vaccination Percentage: 1	Virus TestVirus	Mortality Rate: 0.2	Basic Reproduction Number: 0.5
-Step 0: Interactions: 0, New Infections: 0
+Population Size: 100
+Vaccination Percentage: 0.2
+Virus Name: TestVirus
+Mortality Rate: 0.6
+Basic Reproduction Number: 0.2
+Date of Simulation: 2023-12-05
+
